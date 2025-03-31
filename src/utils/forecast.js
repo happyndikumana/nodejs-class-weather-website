@@ -12,6 +12,7 @@ const forecast = (latitude, longitude, callback) => {
     const feelsLikeTemp = body.current.feelslike;
     const weatherDescription = body.current.weather_descriptions.at(0);
     const humidity = body.current.humidity;
+    const windSpeed = body.current.wind_speed;
 
     if (error) {
       callback("Unable to connect to weather service!", undefined);
@@ -20,7 +21,7 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       callback(
         undefined,
-        `${weatherDescription}. It is currently ${currentTemp} degrees out. It feels like ${feelsLikeTemp} degrees out. The humidity is ${humidity}%`
+        `${weatherDescription}. It is currently ${currentTemp} degrees out. It feels like ${feelsLikeTemp} degrees out. The humidity is ${humidity}% with a windspeed of ${windSpeed}.`
       );
     }
   });
